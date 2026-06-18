@@ -1,0 +1,26 @@
+{
+  "name": "what-if-mirror-moon",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "start:ai": "node server/deepseek-server.mjs",
+    "benchmark:v1.1": "node scripts/benchmark-v1.1-selftest.mjs",
+    "test:death-routing": "node scripts/death-routing-v0.3-selftest.mjs",
+    "test:pre-filing": "node scripts/pre-filing-v1.0-selftest.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "typescript": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
+  }
+}
