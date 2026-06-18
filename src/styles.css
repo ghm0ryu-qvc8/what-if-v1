@@ -259,7 +259,7 @@ button:disabled {
 
 .result-panel {
   display: grid;
-  gap: 26px;
+  gap: clamp(36px, 7vw, 64px);
 }
 
 .result-section h2 {
@@ -673,6 +673,131 @@ button:disabled {
   font-size: clamp(1.12rem, 3vw, 1.42rem);
 }
 
+.truth-hero-section {
+  width: 100%;
+}
+
+.result-story {
+  display: grid;
+  min-height: max(900px, calc(100vh - 64px));
+  grid-template-rows:
+    minmax(440px, 6fr)
+    minmax(130px, 1.5fr)
+    minmax(130px, 1.5fr)
+    minmax(96px, 1fr);
+}
+
+.truth-card {
+  position: relative;
+  display: grid;
+  height: 100%;
+  align-content: center;
+  gap: clamp(24px, 5vw, 38px);
+  overflow: hidden;
+  border: 1px solid #8f725b;
+  border-radius: 12px 12px 0 0;
+  padding: clamp(42px, 9vw, 78px) clamp(28px, 8vw, 68px);
+  background:
+    radial-gradient(circle at 90% 8%, rgb(179 139 100 / 18%), transparent 34%),
+    linear-gradient(145deg, #fffdf8 0%, #f1e5d7 100%);
+  box-shadow: 0 28px 80px rgb(54 39 28 / 18%);
+}
+
+.truth-card::after {
+  content: "What If?";
+  position: absolute;
+  right: -0.08em;
+  bottom: -0.18em;
+  color: rgb(122 92 72 / 7%);
+  font-size: clamp(4.5rem, 18vw, 9rem);
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.truth-label {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  border-bottom: 2px solid #8f725b;
+  padding-bottom: 8px;
+  color: #765641;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.truth-statement {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  color: #17120e !important;
+  font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+  font-size: clamp(1.85rem, 5.5vw, 3.25rem) !important;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.58 !important;
+}
+
+.evidence-item {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  border: 1px solid #d8cfc3;
+  border-top: 0;
+  padding: clamp(18px, 4vw, 30px) clamp(24px, 6vw, 44px);
+  background: #fffdf8;
+}
+
+.evidence-item > span {
+  color: #7a5c48;
+  font-size: 0.86rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.evidence-item p {
+  color: #1f2933;
+  font-size: clamp(1.08rem, 2.8vw, 1.36rem);
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+.evidence-question {
+  border-radius: 0 0 12px 12px;
+  background: #faf4eb;
+}
+
+.evidence-question p {
+  color: #111827;
+  font-size: clamp(1.02rem, 2.5vw, 1.24rem);
+}
+
+.stopped-result-card {
+  display: grid;
+  gap: 16px;
+  border: 1px solid #d8cfc3;
+  border-radius: 12px;
+  padding: clamp(32px, 7vw, 56px);
+  background: #fffdf8;
+  box-shadow: 0 20px 60px rgb(31 41 51 / 10%);
+}
+
+.stopped-result-label {
+  color: #7a5c48;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.stopped-result-card h2 {
+  margin: 0;
+}
+
+.stopped-result-card p {
+  font-size: clamp(1.08rem, 3vw, 1.3rem);
+}
+
 .secondary-button {
   width: fit-content;
   margin-top: 0;
@@ -1001,6 +1126,24 @@ button:disabled {
 }
 
 @media (max-width: 520px) {
+  .page {
+    align-items: flex-start;
+    padding-top: 18px;
+  }
+
+  .truth-card {
+    min-height: 0;
+  }
+
+  .result-story {
+    min-height: 940px;
+    grid-template-rows:
+      minmax(500px, 6fr)
+      minmax(135px, 1.5fr)
+      minmax(135px, 1.5fr)
+      minmax(100px, 1fr);
+  }
+
   .timeline-item {
     grid-template-columns: 68px 1fr;
     gap: 12px;

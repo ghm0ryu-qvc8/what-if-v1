@@ -722,62 +722,40 @@ function MechanismChain({ items }: { items: string[] }) {
 function FateMirror({ result }: { result: InvestigationResult }) {
   if (isStoppedStoryState(result.status)) {
     return (
-      <section className="result-section fate-mirror-section insight-first">
-        <h2>重新调查那个选择</h2>
-        <p className="result-caption">先判断这个故事是否达到立案门槛</p>
-        <div className="fate-mirror">
-          <div className="mirror-line">
-            <span className="mirror-level">故事状态</span>
-            <p>
-              {result.status}
-              {" "}
-              {storyStateLabels[result.status]}
-              <br />
-              {result.statusReason}
-            </p>
-          </div>
+      <section className="result-section stopped-result-section">
+        <div className="stopped-result-card">
+          <span className="stopped-result-label">这次不继续调查</span>
+          <h2>这个故事已经不需要被拆解。</h2>
+          <p>{result.statusReason}</p>
         </div>
       </section>
     );
   }
 
   return (
-    <section className="result-section fate-mirror-section insight-first">
-      <h2>重新调查那个选择</h2>
-      <p className="result-caption">先把真正发生变化的地方找出来</p>
-      <div className="fate-mirror">
-        <div className="mirror-line">
-          <span className="mirror-level">故事状态</span>
-          <p>
-            {result.status}
-            {" "}
-            {storyStateLabels[result.status]}
-            <br />
-            {result.statusReason}
-          </p>
+    <div className="result-story">
+      <section className="result-section truth-hero-section">
+        <div className="truth-card">
+          <span className="truth-label">被忽略的真相</span>
+          <p className="truth-statement">{result.reversal}</p>
         </div>
-        <div className="top-variable">
-          <span>真正失去</span>
-          <strong>{result.loss}</strong>
-        </div>
-        <div className="top-variable">
-          <span>持续影响</span>
-          <strong>{result.lastingImpact}</strong>
-        </div>
-        <div className="top-variable">
-          <span>未被回答的问题</span>
-          <strong>{result.question}</strong>
-        </div>
-        <div className="top-variable">
-          <span>机制匹配</span>
-          <strong>{result.mechanism}</strong>
-        </div>
-        <div className="top-variable">
-          <span>命运反转句</span>
-          <strong>{result.reversal}</strong>
-        </div>
-      </div>
-    </section>
+      </section>
+
+      <article className="evidence-item evidence-loss">
+        <span>真正失去</span>
+        <p>{result.loss}</p>
+      </article>
+
+      <article className="evidence-item evidence-impact">
+        <span>持续影响</span>
+        <p>{result.lastingImpact}</p>
+      </article>
+
+      <article className="evidence-item evidence-question">
+        <span>那个一直没有被回答的问题</span>
+        <p>{result.question}</p>
+      </article>
+    </div>
   );
 }
 
