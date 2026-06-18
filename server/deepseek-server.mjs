@@ -5,8 +5,8 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const rootDir = path.resolve(__dirname, "..");
+const serverDirectory = path.dirname(fileURLToPath(import.meta.url));
+const rootDir = path.resolve(serverDirectory, "..");
 const distDir = path.join(rootDir, "dist");
 const port = Number(process.env.PORT || 5173);
 const DEEPSEEK_CHAT_URL = "https://api.deepseek.com/chat/completions";
