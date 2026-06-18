@@ -4,31 +4,28 @@ const jsonHeaders = {
   "Content-Type": "application/json; charset=utf-8",
 };
 
-export async function handler(event) {
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
+export default async function analyze(request) {
+  if (request.method !== "POST") {
+    return new Response(JSON.stringify({ error: "Method not allowed" }), {
+      status: 405,
       headers: jsonHeaders,
-      body: JSON.stringify({ error: "Method not allowed" }),
-    };
+    });
   }
 
   try {
-    const requestBody = event.body ? JSON.parse(event.body) : {};
+    const requestBody = await request.json();
     const result = await investigateStory(requestBody.story);
 
-    return {
-      statusCode: result.statusCode,
+    return new Response(JSON.stringify(result.payload), {
+      status: result.statusCode,
       headers: jsonHeaders,
-      body: JSON.stringify(result.payload),
-    };
+    });
   } catch (error) {
     console.error("[Netlify analyze] Request failed", error);
 
-    return {
-      statusCode: 500,
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
+      status: 500,
       headers: jsonHeaders,
-      body: JSON.stringify({ error: "Internal server error" }),
-    };
+    });
   }
 }
